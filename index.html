@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Kilo Pay</title>
+  <meta name="theme-color" content="#111418">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Kilo Pay">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <main>
+    <header class="top">
+      <button id="prev-month" class="icon-button" aria-label="Previous month">‹</button>
+      <h1 id="month-title"></h1>
+      <button id="next-month" class="icon-button" aria-label="Next month">›</button>
+      <button id="open-settings" class="icon-button" aria-label="Settings">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/>
+        </svg>
+      </button>
+    </header>
+
+    <p id="profit-label" class="label"></p>
+    <p id="profit" class="profit"></p>
+
+    <div class="tiles">
+      <div class="tile"><span class="label">Pay</span><b id="total-pay"></b></div>
+      <div class="tile"><span class="label">Spent</span><b id="total-spent"></b></div>
+      <div class="tile"><span class="label">Kilos</span><b id="total-kg"></b></div>
+    </div>
+
+    <button id="log-today" class="primary"></button>
+
+    <h2>Days</h2>
+    <ul id="days" class="days"></ul>
+    <p id="no-days" class="empty" hidden>Nothing logged this month.</p>
+  </main>
+
+  <dialog id="log-sheet" class="sheet">
+    <form id="log-form" novalidate>
+      <h2>Log a day</h2>
+      <label>Date <input id="log-date" type="date" required></label>
+      <label>Kilos <input id="log-kg" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></label>
+      <label>Spent today (₪) <input id="log-spent" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></label>
+      <p id="log-preview" class="preview"></p>
+      <p id="log-error" class="error" role="alert"></p>
+      <button type="submit" class="primary">Save</button>
+      <button type="button" id="log-cancel" class="secondary">Cancel</button>
+      <button type="button" id="log-delete" class="danger" hidden>Delete this day</button>
+    </form>
+  </dialog>
+
+  <dialog id="settings-sheet" class="sheet">
+    <form id="rate-form" novalidate>
+      <h2>Settings</h2>
+      <h3>Pay rate</h3>
+      <ul id="rates" class="rates"></ul>
+      <label>New rate (₪ per kilo) <input id="rate-value" type="text" inputmode="decimal" autocomplete="off"></label>
+      <label>Starts from <input id="rate-from" type="date" required></label>
+      <p id="rate-error" class="error" role="alert"></p>
+      <button type="submit" class="secondary">Save new rate</button>
+
+      <h3>Backup</h3>
+      <p id="backup-status" class="hint"></p>
+      <button type="button" id="backup-save" class="secondary">Save a backup</button>
+      <button type="button" id="backup-restore" class="secondary">Restore from a backup</button>
+      <input id="backup-file" type="file" hidden>
+
+      <button type="button" id="settings-close" class="primary">Done</button>
+    </form>
+  </dialog>
+</body>
+</html>

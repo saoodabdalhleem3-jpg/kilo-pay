@@ -1,0 +1,139 @@
+:root {
+  color-scheme: dark;
+  --bg: #111418;
+  --surface: #1c2127;
+  --line: #2b323a;
+  --text: #f2f4f7;
+  --muted: #9aa3ad;
+  --green: #4cd38a;
+  --on-green: #0c1a12;
+  --red: #ff7b72;
+}
+
+* { box-sizing: border-box; }
+
+[hidden] { display: none !important; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+main {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: calc(env(safe-area-inset-top) + 12px) 16px calc(env(safe-area-inset-bottom) + 24px);
+}
+
+h1 { flex: 1; margin: 0; font-size: 18px; font-weight: 600; text-align: center; }
+h2 { margin: 24px 0 8px; font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+h3 { margin: 22px 0 6px; font-size: 15px; }
+p { margin: 0; }
+
+button { font: inherit; color: inherit; border: 0; cursor: pointer; }
+
+.top { display: flex; align-items: center; gap: 4px; margin-bottom: 20px; }
+
+.icon-button {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: none;
+  border-radius: 12px;
+  font-size: 26px;
+  line-height: 1;
+}
+.icon-button:disabled { opacity: .25; cursor: default; }
+
+.label { color: var(--muted); font-size: 14px; }
+
+.profit { margin-top: 2px; font-size: 46px; font-weight: 700; line-height: 1.1; color: var(--green); font-variant-numeric: tabular-nums; }
+.profit.loss { color: var(--red); }
+
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 16px; }
+.tile { min-width: 0; padding: 10px 12px; background: var(--surface); border-radius: 12px; }
+.tile .label { display: block; font-size: 13px; }
+.tile b { display: block; margin-top: 2px; font-size: 18px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+
+.primary, .secondary, .danger {
+  display: block;
+  width: 100%;
+  min-height: 50px;
+  margin-top: 12px;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 600;
+}
+.primary { background: var(--green); color: var(--on-green); }
+.secondary { background: var(--surface); }
+.danger { background: none; color: var(--red); }
+main .primary { margin-top: 16px; }
+
+.days { margin: 0; padding: 0; list-style: none; }
+
+.day {
+  display: grid;
+  grid-template-columns: 1fr auto 84px;
+  gap: 2px 12px;
+  width: 100%;
+  padding: 12px 2px;
+  background: none;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+.day-pay { text-align: right; font-weight: 600; }
+.day-spent { grid-column: 1 / -1; color: var(--muted); font-size: 14px; }
+
+.empty { padding: 20px 0; color: var(--muted); text-align: center; }
+
+.sheet {
+  width: 100%;
+  max-width: 480px;
+  max-height: 92dvh;
+  margin: auto auto 0;
+  padding: 4px 16px calc(env(safe-area-inset-bottom) + 16px);
+  background: var(--bg);
+  color: var(--text);
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 20px 20px 0 0;
+}
+.sheet::backdrop { background: rgb(0 0 0 / .6); }
+.sheet h2 { margin-top: 16px; }
+
+.sheet label { display: block; margin-top: 12px; color: var(--muted); font-size: 14px; }
+
+/* 16px or more stops iOS from zooming in when a box is tapped. */
+.sheet input {
+  display: block;
+  width: 100%;
+  min-height: 50px;
+  margin-top: 4px;
+  padding: 10px 12px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font: inherit;
+  font-size: 20px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.sheet input[type="date"] { font-size: 17px; }
+
+.preview { min-height: 22px; margin-top: 12px; color: var(--green); font-size: 15px; text-align: center; }
+.error { color: var(--red); font-size: 15px; text-align: center; }
+.error:not(:empty) { margin-top: 8px; }
+.hint { color: var(--muted); font-size: 14px; }
+
+.rates { margin: 0; padding: 0; list-style: none; }
+.rates li { display: flex; align-items: center; justify-content: space-between; min-height: 44px; border-bottom: 1px solid var(--line); font-size: 16px; }
+.rates button { min-height: 44px; padding: 0 4px; background: none; color: var(--red); font-size: 15px; }

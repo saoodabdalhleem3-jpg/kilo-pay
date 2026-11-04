@@ -1,0 +1,6 @@
+.superpowers/
+node_modules/
+kilo_pay_deploy
+kilo_pay_deploy.pub
+*.pem
+*.key
